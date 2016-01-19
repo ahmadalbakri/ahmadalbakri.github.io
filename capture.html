@@ -1,0 +1,41 @@
+<script src="bower_components/jQuery/dist/jquery.min.js"></script>
+<script src='http://odyniec.net/projects/imgareaselect/jquery.imgareaselect.pack.js'></script>
+<link rel="stylesheet" href="http://odyniec.net/projects/imgareaselect/css/imgareaselect-animated.css">
+
+<script>
+$(document).ready(function() {
+    $('#captureImage').on('click', function() {
+        // alert('hello')
+        $('#captureImage').css('display', 'none');
+        $('#ladybug_ant').css('display', 'block');
+    });
+
+    $('#ladybug_ant').imgAreaSelect({
+        handles: true,
+        onSelectEnd: function(img, selection) {
+            if (!selection.width || !selection.height) {
+                return;
+            }
+
+            $('#x1').val(selection.x1);
+            $('#y1').val(selection.y1);
+            $('#x2').val(selection.x2);
+            $('#y2').val(selection.y2);
+            $('#w').val(selection.width);
+            $('#h').val(selection.height);
+
+            $('#emailThis').css('display', 'block');
+        },
+        //cancelSelection
+        onSelectChange: function(){
+        	$('#emailThis').css('display', 'none')
+        }
+    });
+})
+</script>
+
+<body>
+	<img src="http://jotform.org/demo/jquery-image-area-select-plugin/images/sweet-dogs.jpg" id="ladybug_ant" style="display: none">
+    <button id="captureImage">Capture</button>
+    <button id="emailThis" style="display: none">Email</button>
+</body>

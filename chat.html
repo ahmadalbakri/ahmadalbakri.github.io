@@ -1,0 +1,65 @@
+<style>
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+	font-family: sans-serif;
+	font-size: 62.5%;
+	background: #ff6600
+}
+
+.abs {
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2)
+}
+
+.rel {
+    position: relative;
+    width: 267px;
+    float: left;
+}
+
+#chatWindow{
+	background: white;
+	font-size: 1.4em;
+	line-height: 1.4em
+}
+
+#chatWindow *{
+	padding: 10px
+}
+</style>
+<div style="float: right; margin-right: 10px">
+    <div class="rel" id="divTinggi">
+        <div class="abs">
+            <div id="chatWindow">
+                <h1 style="background:#333; color: white">Chat Window</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quisquam temporibus, sunt! Odit cumque molestiae modi dolores sit porro cum maiores autem, aliquam numquam optio impedit natus, mollitia vel earum!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function resizeElementHeight(element) {
+    var height = 0;
+    var body = window.document.body;
+    if (window.innerHeight) {
+        height = window.innerHeight;
+    } else if (body.parentElement.clientHeight) {
+        height = body.parentElement.clientHeight;
+    } else if (body && body.clientHeight) {
+        height = body.clientHeight;
+    }
+    element.style.height = ((height - element.offsetTop) + "px");
+}
+
+resizeElementHeight(divTinggi);
+window.onresize = function(event) {
+	resizeElementHeight(divTinggi);
+}
+
+</script>
